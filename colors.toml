@@ -1,0 +1,52 @@
+# Universo — SpaceX / xAI / GrokNight inspired Omarchy theme
+#
+# Design language:
+# - SpaceX marketing canvas: pure void black (#000000). No brand accent,
+#   photography carries color.
+# - GrokNight (grok-build `xai-grok-pager-render/src/theme/groknight.rs`,
+#   the default `groknight` theme): neutral gray ramp with TokyoNight
+#   accents. Chrome stays gray, color is reserved for content semantics.
+#   - Backgrounds: terminal #0a0a0a, darkest #0c0c0c, main #141414,
+#     highlight #242424, hover #2c2c2c, visual selection #363636.
+#   - Text: primary #e1e1e1, secondary #c8c8c8, muted #6c6c6c.
+#   - Accents: blue #7aa2f7, cyan #7dcfff, green #9ece6a,
+#     mint #73daca, magenta #bb9af7, orange #ff9e64, purple #9d7cd8,
+#     red #f7768e, teal #1abc9c, yellow #e0af68, golden #ffdb8d.
+# - Syntax roles follow `assets/grok-night.tmTheme`: indigo-gray comments,
+#   green strings, violet keywords, blue functions, orange numbers,
+#   sky operators, gray variables, cyan types.
+#
+# ANSI slots below carry the GrokNight accent set so TUIs, `git diff`,
+# diagnostics, and terminal apps read with Grok semantics.
+
+mode = "dark"
+
+accent = "#e1e1e1"
+selection = "#363636"
+muted = "#6c6c6c"
+
+background = "#0a0a0a"
+dark_background = "#0c0c0c"
+darker_background = "#000000"
+lighter_background = "#242424"
+
+foreground = "#e1e1e1"
+dark_foreground = "#6c6c6c"
+light_foreground = "#c8c8c8"
+bright_foreground = "#f3f3f3"
+
+red = "#f7768e"
+yellow = "#e0af68"
+orange = "#ff9e64"
+green = "#9ece6a"
+cyan = "#7dcfff"
+blue = "#7aa2f7"
+magenta = "#bb9af7"
+brown = "#5a5a5a"
+
+bright_red = "#ff7a93"
+bright_yellow = "#ffdb8d"
+bright_green = "#b9f27c"
+bright_cyan = "#b4f9f8"
+bright_blue = "#7da6ff"
+bright_magenta = "#c9a5f5"
