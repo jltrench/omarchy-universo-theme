@@ -13,6 +13,10 @@
   <img src="https://img.shields.io/badge/license-MIT-7aa2f7?style=flat-square" alt="MIT license">
 </p>
 
+> 🌅 Looking for the light side? Meet its sibling —
+> [**omarchy-universo-light-theme**](https://github.com/jltrench/omarchy-universo-light-theme),
+> the GrokDay-inspired counterpart with the same hue families on paper.
+
 ---
 
 ## Screenshots
