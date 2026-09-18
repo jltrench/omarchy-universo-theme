@@ -1,73 +1,127 @@
-# Universo
+<p align="center">
+  <img src="unlock.png" width="420" alt="Universo wordmark">
+</p>
 
-A dark, cinematic theme inspired by SpaceX, xAI, and GrokNight.
-Void black canvas, neutral gray ramp, TokyoNight accents — engineered
-restraint with color reserved for content semantics.
-Designed for omarchy.org with a focus on clarity, depth, and minimal distraction.
+<p align="center">
+  <b>A dark, cinematic Omarchy theme inspired by SpaceX, xAI, and GrokNight.</b><br>
+  Void black canvas · neutral gray ramp · TokyoNight accents
+</p>
 
-Theme created with aether https://github.com/bjarneo/aether <br>
-Palette strongly inspired by GrokNight (grok-build `xai-grok-pager-render`).
+<p align="center">
+  <img src="https://img.shields.io/badge/omarchy-theme-0a0a0a?style=flat-square" alt="omarchy theme">
+  <img src="https://img.shields.io/badge/mode-dark-e1e1e1?style=flat-square" alt="dark mode">
+  <img src="https://img.shields.io/badge/license-MIT-7aa2f7?style=flat-square" alt="MIT license">
+</p>
 
-# Installation
+---
 
-Local (this machine):
+## Screenshots
 
-```bash
-omarchy theme set universo
-```
+![Universo desktop](preview.png)
 
-From a git repo (after publishing):
+![Universo boot preview](preview-unlock.png)
+
+| | | |
+|---|---|---|
+| ![universo-1](backgrounds/universo-1.jpg) | ![universo-2](backgrounds/universo-2.jpg) | ![universo-3](backgrounds/universo-3.jpg) |
+| ![universo-4](backgrounds/universo-4.png) | ![universo-5](backgrounds/universo-5.jpg) | ![universo-6](backgrounds/universo-6.jpg) |
+
+> Every background ships with a black gradient baked into the top, so the
+> transparent bar keeps its labels readable on any photo.
+
+## Features
+
+- 🌌 **6 mission-photography backgrounds** with top gradient for bar legibility
+- 🖥️ **Terminals** (ghostty, alacritty, kitty, foot), tmux, btop — generated from `colors.toml`
+- ✏️ **Neovim (aether), Helix, Obsidian** — generated from `colors.toml`
+- 🧩 **Shell/bar, Hyprland, Mako, Walker, Chromium** — generated from `colors.toml`
+- 🔒 **Lock screen** — follows the current background automatically
+- 🚀 **Boot splash (Plymouth)** — `unlock.png` + palette
+- 💻 **Cursor / VS Code** — packaged `local.theme-universo` extension
+- ⚡ **Zed** — hand-tuned `zed.json`
+- 🎨 **Icons** — `Yaru-blue` to match the starlight accent
+- 🔑 **Login screen (SDDM)** — optional override in `extras/sddm/`
+
+## Install
 
 ```bash
 omarchy theme install https://github.com/jltrench/omarchy-universo-theme.git
+omarchy theme set universo
+```
+
+Cycle backgrounds with `omarchy theme bg next`, or pick one:
+
+```bash
+omarchy theme bg set ~/.config/omarchy/themes/universo/backgrounds/universo-4.png
 ```
 
 > Note: a theme installed from a repo cannot ship Lua, terminal configs, or
-> `vscode.json` (Omarchy drops them and generates from `colors.toml`
-> instead). The hand-tuned `zed.json` and `vscode-extension/` in this repo
-> apply to local installs; on repo installs, editors fall back to the
-> generated `Omarchy` theme until imported manually (see below).
+> `vscode.json` — Omarchy drops them and generates everything from
+> `colors.toml` instead (same colors, theme named `Omarchy`). The hand-tuned
+> `zed.json` and `vscode-extension/` in this repo apply to local installs;
+> on repo installs, import them manually (below).
 
-# Screenshots
+## Editor setup (manual steps)
 
-![Universo preview](preview.png)
-![Universo boot preview](preview-unlock.png)
-
-Backgrounds live in `backgrounds/` (`universo-1..6`), each with a black
-gradient baked into the top so the transparent bar keeps labels readable.
-
-# What is themed
-
-- Terminals (ghostty, alacritty, kitty, foot), tmux, btop — generated from `colors.toml`
-- Neovim (aether), Helix, Obsidian — generated from `colors.toml`
-- Shell/bar, Hyprland, Mako, Walker, Chromium — generated from `colors.toml`
-- Lock screen — follows the current background automatically (Quickshell)
-- Boot splash (Plymouth) — `unlock.png` + `colors.toml` via:
-  `omarchy plymouth set-by-theme universo` (needs sudo)
-- Cursor / VS Code — packaged `local.theme-universo` extension (`vscode.json` + `vscode-extension/`)
-- Zed — `zed.json`, copy once to `~/.config/zed/themes/universo.json`
-- Icons — `Yaru-blue`
-
-Login screen (SDDM) stays the Omarchy default by design — same for every
-theme. Boot and lock are the theme-driven surfaces.
-
-# Editor setup (manual steps)
-
-Zed does not auto-apply `zed.json` on `theme set`:
+**Zed** — not auto-applied on `theme set`:
 
 ```bash
 mkdir -p ~/.config/zed/themes
 cp ~/.config/omarchy/themes/universo/zed.json ~/.config/zed/themes/universo.json
 ```
 
-VS Code family uses the packaged `Universo` theme (`local.theme-universo`).
+**VS Code family** — uses the packaged `Universo` theme (`local.theme-universo`).
 Install the local extension once, then:
 
 ```bash
 omarchy-theme-set-vscode
 ```
 
-# Palette (v2, GrokNight-inspired)
+## Boot & login extras
+
+**Plymouth boot splash** (per-theme, needs sudo):
+
+```bash
+omarchy plymouth set-by-theme universo
+```
+
+**SDDM login override** — full-bleed Universo wallpaper + dim scrim + light
+Omarchy wordmark + JetBrainsMono (the stock SDDM theme is a fixed default,
+so this lives in `extras/`, not in the theme itself):
+
+```bash
+sudo cp /usr/share/sddm/themes/omarchy/Main.qml "/usr/share/sddm/themes/omarchy/Main.qml.bak.$(date +%s)"
+sudo cp extras/sddm/Main.qml extras/sddm/logo.png /usr/share/sddm/themes/omarchy/
+sudo cp backgrounds/universo-4.png /usr/share/sddm/themes/omarchy/background.png
+sddm-greeter --test-mode --theme /usr/share/sddm/themes/omarchy  # preview, Esc quits
+```
+
+## Structure
+
+```
+omarchy-universo-theme/
+├── colors.toml          # single source of truth (GrokNight-based)
+├── backgrounds/         # 6 wallpapers with baked top gradient
+├── zed.json             # hand-tuned Zed theme
+├── vscode.json          # points to the local extension below
+├── vscode-extension/    # packaged `local.theme-universo` (Cursor/VS Code)
+├── unlock.png           # boot logo (also the header above)
+├── preview.png / preview-unlock.png
+├── icons.theme          # Yaru-blue
+├── extras/sddm/         # optional login-screen override
+├── LICENSE
+└── README.md
+```
+
+## Palette (v2, GrokNight-inspired)
+
+Strongly inspired by GrokNight, the default theme of
+`xai-grok-pager-render` in grok-build: neutral gray ramp, TokyoNight
+accents, gray chrome with color reserved for content. SpaceX void black
+anchors the darkest step. Syntax roles follow `grok-night.tmTheme`.
+
+<details>
+<summary>Full token table</summary>
 
 | Role | Hex | Source |
 | ---- | --- | ------ |
@@ -94,11 +148,19 @@ omarchy-theme-set-vscode
 | Operator | `#89ddff` | `grok-night.tmTheme` |
 | Abort red | `#f7768e` | TokyoNight |
 
-#### Recommendations for 3rd-Party App Theming
+</details>
+
+#### Recommendations for 3rd-party app theming
 
 Using Bypass Theme-Hook script for GTK, Vesktop, Steam, Spotify etc:
 https://github.com/imbypass/omarchy-theme-hook
 
-### License
+## Credits
+
+- Palette: GrokNight (`grok-build`), TokyoNight accents, SpaceX void
+- Engine: [aether](https://github.com/bjarneo/aether) via Omarchy templates
+- Theme format & docs inspired by [HANCORE](https://github.com/HANCORE-linux) themes
+
+## License
 
 MIT — see [LICENSE](LICENSE).
